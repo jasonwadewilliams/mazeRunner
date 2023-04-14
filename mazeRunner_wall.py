@@ -22,19 +22,15 @@ import random
 @Bit.maze_runner(10, 10, 25)
 def maze_run(bit):
     while not bit.is_red():
-        options = [bit.right_clear(), bit.front_clear()]
-        if options[0]:
-            path_right(bit)
-        elif options[1]:
+        if bit.right_clear():
+            bit.right()
+            bit.move()
+        elif bit.front_clear():
             bit.move()
         else:
             bit.left()
 
-    print("You Survived!")   
-    
-def path_right(bit):
-    bit.right()
-    bit.move()
+    print("You Survived!")  
     
 if __name__ == '__main__':
     maze_run(Bit.new_bit)
